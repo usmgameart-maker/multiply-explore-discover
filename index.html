@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f4ed">
+  <meta name="description" content="Учи таблицу умножения ×2–×9: восемь тематических локаций, сорок картинок и интересных фактов. Прогресс сохраняется в браузере.">
+  <title>Умножай и открывай · Think & Grow</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/data.js" defer></script>
+  <script src="assets/engine.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <button class="brand" data-action="map" aria-label="Think & Grow — на карту"><img class="brand-logo" src="assets/brand-logo.png" alt="Think & Grow"></button>
+      <span class="header-caption">Большой мир начинается с маленьких открытий</span>
+      <button class="collection-button" data-action="collection"><span aria-hidden="true">▧</span> <span class="collection-label">Моя коллекция</span><strong id="totalCount">0 / 40</strong></button>
+    </header>
+    <main id="main">
+      <section id="mapScreen" class="screen map-screen" aria-labelledby="mapTitle">
+        <div class="screen-heading map-heading"><div><span class="eyebrow">МАТЕМАТИЧЕСКАЯ ЭКСПЕДИЦИЯ</span><h1 id="mapTitle" tabindex="-1">Умножай. Исследуй. <em>Открывай!</em></h1><p>Выбери локацию — за каждым примером прячется маленькое чудо.</p></div><button id="resumeButton" class="button primary" data-action="resume" hidden>Продолжить <span aria-hidden="true">→</span></button></div>
+        <div id="locationGrid" class="location-grid" aria-label="Выбор таблицы умножения"></div>
+        <div class="map-guide"><span><b>1</b> Выбери таблицу</span><span><b>2</b> Решай и открывай картинку</span><span><b>3</b> Узнай интересный факт</span></div>
+      </section>
+
+      <section id="locationScreen" class="screen location-screen" aria-labelledby="locationTitle" hidden>
+        <div class="screen-heading"><button class="button quiet" data-action="map">← <span>На карту</span></button><span id="locationProgress" class="small-label"></span></div>
+        <div class="location-hero"><div class="location-copy"><span id="locationEyebrow" class="eyebrow"></span><h1 id="locationTitle" tabindex="-1"></h1><p>Пять раундов. Пять открытий.<br>Решай примеры, убирай фрагменты и узнавай мир.</p><div class="location-promise"><span aria-hidden="true">✦</span> Каждый верный ответ приближает открытие</div></div><div class="location-visual"><img id="locationImage" alt=""><span class="visual-label">Твоя следующая экспедиция</span></div></div>
+        <div class="round-picker"><div class="section-label"><h2>Выбери раунд</h2><span>9 примеров · 3★ без ошибок</span></div><div id="roundButtons" class="round-buttons"></div></div>
+      </section>
+
+      <section id="gameScreen" class="screen game-screen" aria-labelledby="gameTitle" hidden>
+        <div class="screen-heading game-heading"><button class="button quiet" data-action="location">← <span>Раунды</span></button><div class="game-heading-copy"><span id="gameTheme" class="eyebrow"></span><h1 id="gameTitle" tabindex="-1"></h1></div><span id="roundLabel" class="round-chip"></span></div>
+        <div class="play-layout">
+          <div class="puzzle-area"><div class="puzzle-frame"><img id="puzzleImage" alt="Загадочная картинка под фрагментами"><div id="tiles" class="tiles" aria-label="Выбери фрагмент картинки"></div></div><div class="puzzle-caption"><span id="tileCount">Открыто 0 из 9</span><div class="progress-track" id="tileProgress" role="progressbar" aria-label="Открытые фрагменты" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0"><span id="tileFill"></span></div></div></div>
+          <div class="quiz-panel"><span class="quiz-label">МАЛЕНЬКИЙ ШАГ К ОТКРЫТИЮ</span><div id="question" class="question" aria-live="polite">Выбери фрагмент<br>со знаком вопроса</div><div id="answers" class="answers" aria-label="Варианты ответа"></div><p id="feedback" class="feedback" role="status">Реши пример — и часть картинки откроется.</p><div class="quiz-bottom"><span id="mistakeCount">Ошибок: 0</span><span>Можно пробовать ещё!</span></div></div>
+        </div>
+        <div class="game-tip"><span aria-hidden="true">✧</span><span>Не спеши. Здесь важны открытия, а не скорость.</span><button class="text-button" data-action="map">На карту</button></div>
+      </section>
+
+      <section id="rewardScreen" class="screen reward-screen" aria-labelledby="rewardTitle" hidden>
+        <div class="screen-heading"><button id="rewardBack" class="button quiet" data-action="location">← <span>Раунды</span></button><span id="rewardContext" class="small-label"></span><span id="rewardStars" class="reward-stars" aria-label="Звёзды"></span></div>
+        <div class="reward-layout"><div class="reward-image-wrap"><img id="rewardImage" alt=""></div><div class="reward-copy"><span id="rewardEyebrow" class="eyebrow">НОВОЕ ОТКРЫТИЕ</span><h1 id="rewardTitle" tabindex="-1"></h1><span class="fact-label">А ты знаешь?</span><p id="rewardFact" class="reward-fact"></p><p id="rewardResult" class="reward-result"></p><div class="reward-actions"><button id="nextRoundButton" class="button primary" data-action="next">Следующий раунд →</button><button class="button quiet" data-action="collection">В коллекцию</button></div></div></div>
+        <p id="locationComplete" class="location-complete" hidden>✦ Все пять открытий собраны! Выбери следующую локацию или улучши результат.</p>
+      </section>
+
+      <section id="collectionScreen" class="screen collection-screen" aria-labelledby="collectionTitle" hidden>
+        <div class="screen-heading"><div><span class="eyebrow">ТВОЙ АЛЬБОМ ОТКРЫТИЙ</span><h1 id="collectionTitle" tabindex="-1">Моя коллекция</h1></div><button class="button quiet" data-action="map">← На карту</button></div>
+        <div class="collection-filter"><label for="collectionSelect">Локация</label><select id="collectionSelect"></select><span id="collectionProgress" class="small-label"></span></div>
+        <div id="collectionGrid" class="collection-grid"></div>
+        <div class="collection-footer"><button id="previousCollection" class="button quiet" data-action="previousCollection">←</button><p>Открытые картинки можно рассмотреть и перечитать факты.</p><button id="nextCollection" class="button quiet" data-action="nextCollection">→</button></div>
+      </section>
+      <noscript>Для игры нужно включить JavaScript в браузере.</noscript>
+    </main>
+    <footer class="footer"><span id="saveStatus" role="status">Прогресс сохраняется в этом браузере</span><button id="resetProgress" class="reset-progress" data-action="resetProgress" hidden>↺ Сбросить прогресс</button><span id="footerMotto" class="footer-motto">Считаем. Играем. Растём.</span></footer>
+  </div>
+</body>
+</html>

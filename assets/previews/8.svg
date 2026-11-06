@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
+  <rect width="640" height="480" fill="#f3e2e6"/>
+  <path d="M0 365Q160 291 328 368T640 351V480H0Z" fill="#dcb2b9" opacity=".32"/>
+  <path d="M0 419Q181 356 339 417T640 399V480H0Z" fill="#aa6b75" opacity=".09"/>
+  <circle cx="320" cy="226" r="155" fill="#fff" opacity=".5"/>
+  <circle cx="320" cy="226" r="174" fill="none" stroke="#aa6b75" stroke-width="2" stroke-dasharray="3 11" opacity=".23"/>
+  <g fill="#aa6b75" stroke="#aa6b75" stroke-linecap="round" stroke-linejoin="round"><circle cx="310" cy="209" r="68" fill="none" stroke-width="13"/><path d="M358 261L405 310" fill="none" stroke-width="20"/><path d="M291 177L273 187V210L291 220L310 210V187ZM329 199L310 210V232L329 243L348 232V210Z" fill="none" stroke-width="6"/><path d="M294 152L290 143M349 182L358 177" fill="none" stroke-width="5"/></g>
+  <g fill="none" stroke="#aa6b75" stroke-width="4" stroke-linecap="round" opacity=".45"><path d="M129 151H149M139 141V161M475 290H491M483 282V298"/><circle cx="470" cy="132" r="7"/><circle cx="164" cy="309" r="5"/></g>
+  <g transform="translate(458 327) rotate(12)"><rect x="-24" y="-28" width="48" height="56" rx="12" fill="#fff" stroke="#dcb2b9" stroke-width="2"/><text x="0" y="10" text-anchor="middle" font-family="sans-serif" font-size="31" font-weight="bold" fill="#aa6b75">?</text></g>
+</svg>
